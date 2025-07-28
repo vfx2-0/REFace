@@ -125,7 +125,9 @@ python scripts/modify_checkpoints.py
 ```
 
 ### Training REFace
-To train a new model on CelebAHQ, you can use `main.py`. For example,
+Before starting training, set your Weights & Biases API key in the
+`WANDB_API_KEY` environment variable. Then you can train a new model on
+CelebAHQ using `main.py`. For example,
 ```
 python -u main.py \
 --logdir models/REFace/ \
