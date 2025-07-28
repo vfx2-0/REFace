@@ -27,7 +27,7 @@ import proglog
 from diffusers.pipelines.stable_diffusion.safety_checker import StableDiffusionSafetyChecker
 from transformers import AutoFeatureExtractor
 
-from src.utils.alignmengt import crop_faces, calc_alignment_coefficients, crop_faces_from_image
+from src.utils.alignment import crop_faces, calc_alignment_coefficients, crop_faces_from_image
 
 # from ldm.data.test_bench_dataset import COCOImageDataset
 # from ldm.data.test_bench_dataset import CelebAdataset,FFHQdataset
