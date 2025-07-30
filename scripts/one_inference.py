@@ -24,8 +24,8 @@ import albumentations as A
 # from moviepy.editor import AudioFileClip, VideoFileClip
 # import proglog
 
-from diffusers.pipelines.stable_diffusion.safety_checker import StableDiffusionSafetyChecker
-from transformers import AutoFeatureExtractor
+# from diffusers.pipelines.stable_diffusion.safety_checker import StableDiffusionSafetyChecker
+# from transformers import AutoFeatureExtractor
 
 from src.utils.alignment import crop_faces, calc_alignment_coefficients, crop_faces_from_image
 
@@ -54,9 +54,9 @@ import torch.nn as nn
 import numpy as np  
 
 # load safety model
-safety_model_id = "CompVis/stable-diffusion-safety-checker"
-safety_feature_extractor = AutoFeatureExtractor.from_pretrained(safety_model_id)
-safety_checker = StableDiffusionSafetyChecker.from_pretrained(safety_model_id)
+# safety_model_id = "models/CompVis/stable-diffusion-safety-checker"
+# safety_feature_extractor = AutoFeatureExtractor.from_pretrained(safety_model_id)
+# safety_checker = StableDiffusionSafetyChecker.from_pretrained(safety_model_id)
 
 
 #set cuda device 
@@ -173,14 +173,14 @@ def load_replacement(x):
         return x
 
 
-def check_safety(x_image):
-    safety_checker_input = safety_feature_extractor(numpy_to_pil(x_image), return_tensors="pt")
-    x_checked_image, has_nsfw_concept = safety_checker(images=x_image, clip_input=safety_checker_input.pixel_values)
-    assert x_checked_image.shape[0] == len(has_nsfw_concept)
-    for i in range(len(has_nsfw_concept)):
-        if has_nsfw_concept[i]:
-            x_checked_image[i] = load_replacement(x_checked_image[i])
-    return x_checked_image, has_nsfw_concept
+# def check_safety(x_image):
+#     safety_checker_input = safety_feature_extractor(numpy_to_pil(x_image), return_tensors="pt")
+#     x_checked_image, has_nsfw_concept = safety_checker(images=x_image, clip_input=safety_checker_input.pixel_values)
+#     assert x_checked_image.shape[0] == len(has_nsfw_concept)
+#     for i in range(len(has_nsfw_concept)):
+#         if has_nsfw_concept[i]:
+#             x_checked_image[i] = load_replacement(x_checked_image[i])
+#     return x_checked_image, has_nsfw_concept
 
 
 
